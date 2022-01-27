@@ -1,4 +1,4 @@
-module oras.land/oras-go
+module github.com/nikkelma/oras-project_oras-go
 
 go 1.17
 
@@ -16,7 +16,10 @@ require (
 	github.com/stretchr/testify v1.7.0
 	golang.org/x/crypto v0.0.0-20211117183948-ae814b36b871
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
+	oras.land/oras-go v0.0.0-00010101000000-000000000000
 )
+
+replace oras.land/oras-go => ./
 
 require (
 	github.com/Azure/go-ansiterm v0.0.0-20170929234023-d6e3b3328b78 // indirect
