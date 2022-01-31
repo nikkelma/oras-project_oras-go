@@ -62,7 +62,7 @@ func Copy(ctx context.Context, from target.Target, fromRef string, to target.Tar
 
 	_, desc, err := from.Resolve(ctx, fromRef)
 	if err != nil {
-		return ocispec.Descriptor{}, err
+		return ocispec.Descriptor{}, fmt.Errorf("from resolve: %w", err)
 	}
 
 	fetcher, err := from.Fetcher(ctx, fromRef)
@@ -113,7 +113,7 @@ func transferContent(ctx context.Context, desc ocispec.Descriptor, fetcher remot
 				if !errdefs.IsAlreadyExists(err) {
 					return nil, err
 				}
-
+				fmt.Printf("ORAS FORK - layer already exists: %s\n", desc.Digest)
 				return nil, nil
 			}
 			defer cw.Close()
